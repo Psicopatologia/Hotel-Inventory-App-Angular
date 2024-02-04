@@ -6,7 +6,7 @@
 
 <div *ngIf="rooms.availableRooms > 0">
     Room List:
-    //{{roomList}}
+    {{roomList | json}}
     <table>
         <thead>
             <th>Index</th>
@@ -17,16 +17,19 @@
             <th>Amenities</th>
             <th>Checkin Time</th>
             <th>Checkout Time</th>
+            <th>Rating</th>
         </thead>
-        <tr [ngClass]="e? 'even' : 'odd'" *ngFor="let room of roomList; let e = even; let o=odd; let i=index">
-            <th>{{i}}</th>
+        <tr [ngClass]="e? 'even' : 'odd'"
+            *ngFor="let room of roomList | slice: 0:3; let e = even; let o=odd; let i=index">
+            <th>{{i | percent}}</th>
             <th>{{e ? "Even" : "Odd"}}</th>
             <th>{{room.roomNumber}}</th>
             <th>{{room.roomType}}</th>
-            <th>{{room.price}}</th>
-            <th>{{room.amenities}}</th>
-            <th>{{room.checkinTime.toDateString()}}</th>
-            <th>{{room.checkoutTime.toDateString()}}</th>
+            <th>{{room.price | currency: 'EUR'}}</th>
+            <th>{{room.amenities | titlecase}}</th>
+            <th>{{room.checkinTime | date: 'short'}}</th>
+            <th>{{room.checkoutTime | date: 'dd/MMM/yyy'}}</th>
+            <th>{{room.rating | number: '1.2-2'}}</th>
         </tr>
     </table>
 </div>
