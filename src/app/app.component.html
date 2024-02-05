@@ -1,6 +1,11 @@
 <h1>Hello World!</h1>
 
-<div [ngSwitch]="role">
+<hinv-container>
+    <hinv-rooms></hinv-rooms>
+    <hinv-employee></hinv-employee>
+    <h1>This is from ng-content</h1>
+</hinv-container>
+<!-- <div [ngSwitch]="role">
     <div *ngSwitchCase="'User'">
         Welcome user
     </div>
@@ -10,4 +15,11 @@
     <div *ngSwitchDefault="">
         YOU ARE NO ONE
     </div>
-</div>
+</div> -->
+
+
+<!-- <div>
+    <ng-template #user></ng-template>
+</div> -->
+
+<div #name></div>
